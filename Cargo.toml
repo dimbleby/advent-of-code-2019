@@ -1,0 +1,8 @@
+[package]
+name = "advent-of-code-2019"
+version = "0.1.0"
+authors = ["David Hotham <david.hotham@blueyonder.co.uk>"]
+edition = "2018"
+
+[dependencies]
+structopt = "0.3.5"
