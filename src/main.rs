@@ -1,6 +1,7 @@
 use structopt::StructOpt;
 mod day1;
 mod day2;
+mod day3;
 
 #[derive(StructOpt)]
 struct Cli {
@@ -12,6 +13,7 @@ fn main() {
     match args.day {
         1 => day1::day1(),
         2 => day2::day2(),
+        3 => day3::day3(),
         _ => println!("Unimplemented day: {}", args.day),
     }
 }
