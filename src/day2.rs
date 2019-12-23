@@ -1,6 +1,6 @@
+use crate::intcode::IntCode;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
-use crate::intcode::IntCode;
 
 pub(crate) fn day2() {
     let input = File::open("data/day2.txt").expect("Failed to open input");

@@ -3,6 +3,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day5;
+mod day6;
 mod intcode;
 
 #[derive(StructOpt)]
@@ -18,6 +19,7 @@ fn main() {
         3 => day3::day3(),
         4 => println!("Implemented day four in J!"),
         5 => day5::day5(),
+        6 => day6::day6(),
         _ => println!("Unimplemented day: {}", args.day),
     }
 }
