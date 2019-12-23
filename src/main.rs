@@ -14,6 +14,7 @@ fn main() {
         1 => day1::day1(),
         2 => day2::day2(),
         3 => day3::day3(),
+        4 => println!("Implemented day four in J!"),
         _ => println!("Unimplemented day: {}", args.day),
     }
 }
