@@ -1,7 +1,5 @@
 use crate::intcode::IntCode;
 use itertools::Itertools;
-use std::fs::File;
-use std::io::{BufRead, BufReader};
 
 struct Amp {
     intcode: IntCode,
@@ -22,10 +20,7 @@ impl Amp {
 }
 
 pub(crate) fn day07() {
-    let input = File::open("data/day07.txt").expect("Failed to open input");
-    let mut buffered = BufReader::new(input);
-    let mut line = String::new();
-    buffered.read_line(&mut line).expect("Failed to read line");
+    let line = std::fs::read_to_string("data/day07.txt").expect("Failed to open input");
     let program: Vec<i64> = line
         .trim()
         .split(',')

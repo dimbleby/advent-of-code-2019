@@ -1,14 +1,8 @@
 use crate::itertools::Itertools;
-use std::fs::File;
-use std::io::{BufRead, BufReader};
 use std::str;
 
 pub(crate) fn day08() {
-    let input = File::open("data/day08.txt").expect("Failed to open input");
-    let mut buffered = BufReader::new(input);
-    let mut line = String::new();
-    buffered.read_line(&mut line).expect("Failed to read line");
-
+    let line = std::fs::read_to_string("data/day08.txt").expect("Failed to open input");
     let layers = line
         .trim()
         .as_bytes()

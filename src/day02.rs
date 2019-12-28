@@ -1,12 +1,7 @@
 use crate::intcode::IntCode;
-use std::fs::File;
-use std::io::{BufRead, BufReader};
 
 pub(crate) fn day02() {
-    let input = File::open("data/day02.txt").expect("Failed to open input");
-    let mut buffered = BufReader::new(input);
-    let mut line = String::new();
-    buffered.read_line(&mut line).expect("Failed to read line");
+    let line = std::fs::read_to_string("data/day02.txt").expect("Failed to open input");
     let program: Vec<i64> = line
         .trim()
         .split(',')
