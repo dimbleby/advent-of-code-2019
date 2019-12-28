@@ -1,9 +1,12 @@
+#[macro_use]
+extern crate itertools;
 use structopt::StructOpt;
 mod day01;
 mod day02;
 mod day03;
 mod day05;
 mod day06;
+mod day07;
 mod intcode;
 
 #[derive(StructOpt)]
@@ -20,6 +23,7 @@ fn main() {
         4 => println!("Implemented day four in J!"),
         5 => day05::day05(),
         6 => day06::day06(),
+        7 => day07::day07(),
         _ => println!("Unimplemented day: {}", args.day),
     }
 }

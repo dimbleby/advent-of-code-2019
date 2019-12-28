@@ -13,7 +13,21 @@ pub(crate) fn day05() {
         .map(|word| word.parse::<i64>().unwrap())
         .collect();
 
-    // Provide user input: 1 for part 1, 5 for part 2.
-    let mut intcode = IntCode::new(program);
+    // Part one.
+    println!("Part one:");
+    let mut intcode = IntCode::new(program.clone());
+    intcode.add_input(1);
     intcode.execute();
+    while let Some(value) = intcode.get_output() {
+        println!("{}", value);
+    }
+
+    // Part two.
+    println!("Part two:");
+    let mut intcode = IntCode::new(program);
+    intcode.add_input(5);
+    intcode.execute();
+    while let Some(value) = intcode.get_output() {
+        println!("{}", value);
+    }
 }

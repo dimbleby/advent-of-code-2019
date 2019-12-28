@@ -1,11 +1,12 @@
+use std::collections::VecDeque;
 use std::convert::TryFrom;
-use std::io;
-use std::io::Write;
 
 #[derive(Debug, Default)]
 pub struct IntCode {
     memory: Vec<i64>,
     instruction_pointer: usize,
+    input: VecDeque<i64>,
+    output: VecDeque<i64>,
 }
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
@@ -32,6 +33,8 @@ impl IntCode {
         Self {
             memory,
             instruction_pointer: 0,
+            input: VecDeque::new(),
+            output: VecDeque::new(),
         }
     }
 
@@ -41,6 +44,14 @@ impl IntCode {
 
     pub fn write(&mut self, address: usize, value: i64) {
         self.memory[address] = value
+    }
+
+    pub fn add_input(&mut self, value: i64) {
+        self.input.push_back(value)
+    }
+
+    pub fn get_output(&mut self) -> Option<i64> {
+        self.output.pop_front()
     }
 
     fn get_opcode(&self) -> i64 {
@@ -83,21 +94,18 @@ impl IntCode {
                 }
                 3 => {
                     // Read input and save it to address.
-                    print!("Provide input: ");
-                    io::stdout().flush().unwrap();
-                    let mut input = String::new();
-                    io::stdin()
-                        .read_line(&mut input)
-                        .expect("Failed to read input");
-                    let value = input.trim().parse::<i64>().expect("Failed to parse input");
-                    let dest = self.fetch(1, Mode::Immediate) as usize;
-                    self.write(dest, value);
-                    self.instruction_pointer += 2;
+                    if let Some(value) = self.input.pop_front() {
+                        let dest = self.fetch(1, Mode::Immediate) as usize;
+                        self.write(dest, value);
+                        self.instruction_pointer += 2;
+                    } else {
+                        break;
+                    }
                 }
                 4 => {
                     // Output value.
                     let value = self.get_parameter(opcode, 1);
-                    println!("{}", value);
+                    self.output.push_back(value);
                     self.instruction_pointer += 2;
                 }
                 5 => {
