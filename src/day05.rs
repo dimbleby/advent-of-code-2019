@@ -15,7 +15,7 @@ pub(crate) fn day05() {
 
     // Part two.
     println!("Part two:");
-    let mut part_two = intcode.clone();
+    let mut part_two = intcode;
     part_two.add_input(5);
     part_two.execute();
     while let Some(value) = part_two.get_output() {

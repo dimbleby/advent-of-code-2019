@@ -12,7 +12,7 @@ pub(crate) fn day09() {
     println!("Part one answer is {}", answer);
 
     // Part two.
-    let mut part_two = intcode.clone();
+    let mut part_two = intcode;
     part_two.add_input(2);
     part_two.execute();
     let answer = part_two.get_output().unwrap();
