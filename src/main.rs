@@ -1,9 +1,9 @@
 use structopt::StructOpt;
-mod day1;
-mod day2;
-mod day3;
-mod day5;
-mod day6;
+mod day01;
+mod day02;
+mod day03;
+mod day05;
+mod day06;
 mod intcode;
 
 #[derive(StructOpt)]
@@ -14,12 +14,12 @@ struct Cli {
 fn main() {
     let args = Cli::from_args();
     match args.day {
-        1 => day1::day1(),
-        2 => day2::day2(),
-        3 => day3::day3(),
+        1 => day01::day01(),
+        2 => day02::day02(),
+        3 => day03::day03(),
         4 => println!("Implemented day four in J!"),
-        5 => day5::day5(),
-        6 => day6::day6(),
+        5 => day05::day05(),
+        6 => day06::day06(),
         _ => println!("Unimplemented day: {}", args.day),
     }
 }

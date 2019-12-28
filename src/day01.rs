@@ -1,8 +1,8 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-pub(crate) fn day1() {
-    let input = File::open("data/day1.txt").expect("Failed to open input");
+pub(crate) fn day01() {
+    let input = File::open("data/day01.txt").expect("Failed to open input");
     let buffered = BufReader::new(input);
     let masses: Vec<u64> = buffered
         .lines()

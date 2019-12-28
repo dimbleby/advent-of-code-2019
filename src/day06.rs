@@ -20,8 +20,8 @@ impl Node {
     }
 }
 
-pub(crate) fn day6() {
-    let input = File::open("data/day6.txt").expect("Failed to open input");
+pub(crate) fn day06() {
+    let input = File::open("data/day06.txt").expect("Failed to open input");
     let buffered = BufReader::new(input);
     let lines = buffered.lines().map(|line| line.unwrap());
 

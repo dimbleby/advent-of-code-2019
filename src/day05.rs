@@ -2,8 +2,8 @@ use crate::intcode::IntCode;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-pub(crate) fn day5() {
-    let input = File::open("data/day5.txt").expect("Failed to open input");
+pub(crate) fn day05() {
+    let input = File::open("data/day05.txt").expect("Failed to open input");
     let mut buffered = BufReader::new(input);
     let mut line = String::new();
     buffered.read_line(&mut line).expect("Failed to read line");

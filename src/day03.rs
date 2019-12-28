@@ -83,8 +83,8 @@ impl Point {
     }
 }
 
-pub(crate) fn day3() {
-    let input = File::open("data/day3.txt").expect("Failed to open input");
+pub(crate) fn day03() {
+    let input = File::open("data/day03.txt").expect("Failed to open input");
     let mut buffered = BufReader::new(input);
 
     let mut line1 = String::new();
