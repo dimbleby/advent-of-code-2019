@@ -6,8 +6,8 @@ struct Amp {
 }
 
 impl Amp {
-    fn new(program: &[i64], phase: i64) -> Self {
-        let mut intcode = IntCode::new(program.to_vec());
+    fn new(intcode: &IntCode, phase: i64) -> Self {
+        let mut intcode = intcode.clone();
         intcode.add_input(phase);
         Self { intcode }
     }
@@ -21,18 +21,14 @@ impl Amp {
 
 pub(crate) fn day07() {
     let line = std::fs::read_to_string("data/day07.txt").expect("Failed to open input");
-    let program: Vec<i64> = line
-        .trim()
-        .split(',')
-        .map(|word| word.parse::<i64>().unwrap())
-        .collect();
+    let intcode: IntCode = line.parse().expect("Could not parse program");
 
     // Part one.
     let mut best_output = 0;
     for phase_sequence in (0..5).permutations(5) {
         let mut amps = phase_sequence
             .iter()
-            .map(|&phase| Amp::new(&program, phase))
+            .map(|&phase| Amp::new(&intcode, phase))
             .collect::<Vec<_>>();
         let output = run_line_once(&mut amps, 0).unwrap();
         if output > best_output {
@@ -46,7 +42,7 @@ pub(crate) fn day07() {
     for phase_sequence in (5..10).permutations(5) {
         let mut amps = phase_sequence
             .iter()
-            .map(|&phase| Amp::new(&program, phase))
+            .map(|&phase| Amp::new(&intcode, phase))
             .collect::<Vec<_>>();
         let output = run_line_repeatedly(&mut amps);
         if output > best_output {

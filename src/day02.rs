@@ -2,13 +2,9 @@ use crate::intcode::IntCode;
 
 pub(crate) fn day02() {
     let line = std::fs::read_to_string("data/day02.txt").expect("Failed to open input");
-    let program: Vec<i64> = line
-        .trim()
-        .split(',')
-        .map(|word| word.parse::<i64>().unwrap())
-        .collect();
+    let intcode: IntCode = line.parse().expect("Could not parse program");
 
-    let mut part_one = IntCode::new(program.clone());
+    let mut part_one = intcode.clone();
     part_one.write(1, 12);
     part_one.write(2, 2);
     part_one.execute();
@@ -17,7 +13,7 @@ pub(crate) fn day02() {
 
     'outer: for noun in 0..100 {
         for verb in 0..100 {
-            let mut part_two = IntCode::new(program.clone());
+            let mut part_two = intcode.clone();
             part_two.write(1, noun);
             part_two.write(2, verb);
             part_two.execute();
