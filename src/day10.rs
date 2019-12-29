@@ -1,3 +1,4 @@
+use crate::util::gcd;
 use std::cmp::Ordering;
 use std::collections::{BTreeMap, HashSet};
 use std::fs::File;
@@ -165,17 +166,4 @@ pub(crate) fn day10() {
             }
         }
     }
-}
-
-fn gcd(x: usize, y: usize) -> usize {
-    let (mut a, mut b) = if x > y { (x, y) } else { (y, x) };
-    loop {
-        if b == 0 {
-            break;
-        };
-        let remainder = a % b;
-        a = b;
-        b = remainder;
-    }
-    a
 }
