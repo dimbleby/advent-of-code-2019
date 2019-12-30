@@ -42,7 +42,7 @@ enum Axis {
 
 impl System {
     fn new(moons: Vec<Moon>) -> Self {
-        Self { moons: moons }
+        Self { moons }
     }
 
     fn step(&mut self) {
