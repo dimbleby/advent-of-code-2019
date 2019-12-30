@@ -6,8 +6,7 @@ struct Amp {
 }
 
 impl Amp {
-    fn new(intcode: &IntCode, phase: i64) -> Self {
-        let mut intcode = intcode.clone();
+    fn new(mut intcode: IntCode, phase: i64) -> Self {
         intcode.add_input(phase);
         Self { intcode }
     }
@@ -28,7 +27,7 @@ pub(crate) fn day07() {
     for phase_sequence in (0..5).permutations(5) {
         let mut amps = phase_sequence
             .iter()
-            .map(|&phase| Amp::new(&intcode, phase))
+            .map(|&phase| Amp::new(intcode.clone(), phase))
             .collect::<Vec<_>>();
         let output = run_line_once(&mut amps, 0).unwrap();
         if output > best_output {
@@ -42,7 +41,7 @@ pub(crate) fn day07() {
     for phase_sequence in (5..10).permutations(5) {
         let mut amps = phase_sequence
             .iter()
-            .map(|&phase| Amp::new(&intcode, phase))
+            .map(|&phase| Amp::new(intcode.clone(), phase))
             .collect::<Vec<_>>();
         let output = run_line_repeatedly(&mut amps);
         if output > best_output {

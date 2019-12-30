@@ -41,10 +41,8 @@ enum Axis {
 }
 
 impl System {
-    fn new(moons: &[Moon]) -> Self {
-        Self {
-            moons: moons.to_vec(),
-        }
+    fn new(moons: Vec<Moon>) -> Self {
+        Self { moons: moons }
     }
 
     fn step(&mut self) {
@@ -125,7 +123,7 @@ pub(crate) fn day12() {
     let europa = Moon::new(Vector3D(9, 12, 5));
     let ganymede = Moon::new(Vector3D(-9, 0, -4));
     let callista = Moon::new(Vector3D(4, 6, 0));
-    let system = System::new(&[io, europa, ganymede, callista]);
+    let system = System::new(vec![io, europa, ganymede, callista]);
 
     // Part one.
     let mut part_one = system.clone();
