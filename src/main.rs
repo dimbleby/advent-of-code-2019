@@ -1,5 +1,7 @@
 #[macro_use]
 extern crate itertools;
+#[macro_use]
+extern crate lazy_static;
 use structopt::StructOpt;
 mod day01;
 mod day02;
@@ -17,6 +19,7 @@ mod day14;
 mod day15;
 mod day16;
 mod day17;
+mod day18;
 mod intcode;
 mod util;
 
@@ -45,6 +48,7 @@ fn main() {
         15 => day15::day15(),
         16 => day16::day16(),
         17 => day17::day17(),
+        18 => day18::day18(),
         _ => println!("Unimplemented day: {}", args.day),
     }
 }
