@@ -21,6 +21,7 @@ mod day16;
 mod day17;
 mod day18;
 mod day19;
+mod day20;
 mod intcode;
 mod util;
 
@@ -51,6 +52,7 @@ fn main() {
         17 => day17::day17(),
         18 => day18::day18(),
         19 => day19::day19(),
+        20 => day20::day20(),
         _ => println!("Unimplemented day: {}", args.day),
     }
 }
