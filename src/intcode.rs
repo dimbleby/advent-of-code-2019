@@ -32,6 +32,7 @@ impl TryFrom<i64> for Mode {
     }
 }
 
+#[derive(PartialEq, Eq)]
 pub enum ExecuteResult {
     Done,
     InputNeeded,
