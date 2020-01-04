@@ -32,6 +32,11 @@ impl TryFrom<i64> for Mode {
     }
 }
 
+pub enum ExecuteResult {
+    Done,
+    InputNeeded,
+}
+
 impl IntCode {
     pub fn new(program: Vec<i64>) -> Self {
         Self {
@@ -88,7 +93,8 @@ impl IntCode {
         }
     }
 
-    pub fn execute(&mut self) {
+    pub fn execute(&mut self) -> ExecuteResult {
+        let mut result = ExecuteResult::Done;
         loop {
             let opcode = self.get_opcode();
             match opcode % 100 {
@@ -115,6 +121,7 @@ impl IntCode {
                         self.write(dest, value);
                         self.instruction_pointer += 2;
                     } else {
+                        result = ExecuteResult::InputNeeded;
                         break;
                     }
                 }
@@ -170,6 +177,7 @@ impl IntCode {
                 _ => panic!("Unexpected opcode: {}!", opcode),
             }
         }
+        result
     }
 }
 
