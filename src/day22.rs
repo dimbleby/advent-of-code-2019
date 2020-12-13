@@ -185,7 +185,7 @@ fn modular_inverse(modulus: u64, n: u64) -> u64 {
     let mut x0 = 0;
     let mut x1 = 1;
 
-    // Exended Euclidean algorithm for GCD.
+    // Extended Euclidean algorithm for GCD.
     while b != 0 {
         let quotient = a / b;
         let remainder = a % b;
